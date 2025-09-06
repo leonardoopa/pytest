@@ -23,3 +23,7 @@ def test_serialize_user_completo():
     }
     
     assert resultado == esperado
+
+def test_serialize_user_string(): 
+       with pytest.raises(AttributeError): 
+               serialize_user("string de teste") 
