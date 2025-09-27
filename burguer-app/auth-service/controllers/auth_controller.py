@@ -4,9 +4,11 @@ from models.user_model import serialize_user
 
 auth_bp = Blueprint("auth", __name__)
 
+
 @auth_bp.route("/login", methods=["GET"])
 def login_page():
     return render_template("login.html")
+
 
 @auth_bp.route("/login", methods=["POST"])
 def login():
@@ -15,14 +17,16 @@ def login():
     if not user:
         flash("Credenciais inválidas")
         return redirect(url_for("auth.login_page"))
-    
+
     session["user"] = serialize_user(user)
     return redirect(url_for("auth.dashboard"))
+
 
 @auth_bp.route("/register", methods=["GET"])
 def register_page():
     # Redirect to user-service for user creation
     return redirect("http://localhost:5001/user/create")
+
 
 @auth_bp.route("/dashboard")
 def dashboard():
@@ -30,6 +34,7 @@ def dashboard():
     if not user:
         return redirect(url_for("auth.login_page"))
     return render_template("dashboard.html", user=user)
+
 
 @auth_bp.route("/logout")
 def logout():

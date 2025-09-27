@@ -8,16 +8,16 @@ from utils.jwt_handler import generate_token
 db = get_db()
 users_col = db["users"]
 
-def login_user(email, password):
 
+def login_user(email, password):
     """Autentica um usuário com email e senha.
     Args:
         email (str): Email do usuário.
-        password (str): Senha do usuário.   
+        password (str): Senha do usuário.
     Returns:
         dict: Dados do usuário e token se a autenticação for bem-sucedida, None caso contrário.
     """
-    
+
     user = users_col.find_one({"email": email})
     if not user or not check_password_hash(user["password"], password):
         return None
@@ -28,5 +28,5 @@ def login_user(email, password):
         "name": user.get("name", ""),
         "address": user.get("address", ""),
         "role": user.get("role", "cliente"),
-        "token": token
+        "token": token,
     }
