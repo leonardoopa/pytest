@@ -1,4 +1,5 @@
 """Controladores para autenticação de usuários"""
+
 from flask import Blueprint, render_template, request, redirect, url_for, flash, session
 from services.auth_service import login_user
 from models.user_model import serialize_user

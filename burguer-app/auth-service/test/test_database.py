@@ -5,6 +5,7 @@ from unittest.mock import patch, MagicMock
 
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__))))
 
+
 def test_get_db():
     with patch("pymongo.MongoClient") as mock_client:
         mock_db = MagicMock()
