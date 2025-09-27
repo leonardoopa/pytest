@@ -27,3 +27,18 @@ def test_serialize_user_completo():
 def test_serialize_user_string(): 
        with pytest.raises(AttributeError): 
                serialize_user("string de teste") 
+
+def test_serialize_user_dict_none():
+    user = {
+        "email": None,
+        "name": None,
+        "address": None,
+        "role": None
+    }
+    resultado = serialize_user(user)
+    esperado = {
+        "email": None,
+        "name": None,
+        "address": None,
+        "role": None
+    }
