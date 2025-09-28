@@ -17,6 +17,8 @@ db = client["burguer_app_db"]
 
 
 """função para retornar a instância do banco de dados"""
+
+
 def get_db():
     """Retorna a instância do banco de dados MongoDB"""
     return db
