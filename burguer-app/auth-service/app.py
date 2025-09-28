@@ -16,20 +16,21 @@ secret_key = os.getenv("SECRET_KEY")
 print(f"SECRET_KEY carregada: {secret_key}")  # DEBUG: deve imprimir o valor correto
 
 
-
-#Define a chave secreta para a sessão
+# Define a chave secreta para a sessão
 app.secret_key = os.getenv("SECRET_KEY")
 
 
 # Registra o blueprint de autenticação
-app.register_blueprint(auth_bp, url_prefix='/auth')
+app.register_blueprint(auth_bp, url_prefix="/auth")
+
 
 # Redireciona a rota raiz para a página de login
-@app.route('/')
+@app.route("/")
 def index():
-    return redirect(url_for('auth.login_page'))
+    return redirect(url_for("auth.login_page"))
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     # Executa a aplicação Flask
     app.run(port=5000, debug=True)
     # O debug=True permite recarregar automaticamente a aplicação ao fazer alterações no código
